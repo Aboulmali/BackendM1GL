@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="BackendM1GL/BackendM1GL.csproj" />
+</Solution>
