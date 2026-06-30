@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Formatting.Compact;
+using StackExchange.Redis;
 using System.Text;
 
 Log.Logger = new LoggerConfiguration()
@@ -51,6 +52,17 @@ try
                 ClockSkew = TimeSpan.FromSeconds(30)
             };
         });
+    // ── Redis ─────────────────────────────────────────────────────────────
+    var redisConnection = builder.Configuration["Redis:ConnectionString"];
+    // 1️⃣ IDistributedCache (pour le cache standard)
+    builder.Services.AddStackExchangeRedisCache(options =>
+    {
+        options.Configuration = redisConnection;
+        options.InstanceName = builder.Configuration["Redis:InstanceName"];
+    });
+
+    // 3️⃣ Enregistrer les services
+    builder.Services.AddSingleton<ICacheService, CacheService>();
 
     builder.Services.AddAuthorization();
     builder.Services.AddScoped<ITokenService, TokenService>();
