@@ -12,15 +12,13 @@ Projet M1 Génie Logiciel - API REST avec authentification JWT
 
 ## ✨ Fonctionnalités
 
-- 🔐 Authentification JWT avec Refresh Tokens
-- 👤 Inscription / Connexion / Déconnexion
-- 👥 Gestion des utilisateurs (CRUD)
--    Gestion des produits (CRUD)
-- 🎭 Système de rôles (User / Admin)
-- 🔒 Hashage des mots de passe avec BCrypt
-- 📊 Pagination et recherche
-- 📋 Logs avec Serilog
-- 📖 Documentation Swagger
+### Authentification & Sécurité 🔐
+- ✅ Authentification JWT avec Refresh Tokens
+- ✅ Inscription / Connexion / Déconnexion
+- ✅ Hashage des mots de passe avec BCrypt
+- ✅ Système de rôles (User / Admin)
+- ✅ Validation des tokens
+
 
 ## 🚀 Installation
 
@@ -28,19 +26,27 @@ Projet M1 Génie Logiciel - API REST avec authentification JWT
 
 - .NET 10 SDK
 - PostgreSQL 
-- Visual Studio 2025
+- Visual Studio 2026
 -
 ### Étapes
 
 1. Cloner le repository
-git clone https://github.com/[ton-username]/BackendM1GL.git
+
+git clone https://github.com/Aboulmali/BackendM1GL.git
 cd BackendM1GL
+
 2. Restaurer les packages
+
 dotnet restore
 
 3. Configurer la base de données
    - Créer une base PostgreSQL nommée \`usermgmt\`
    - Modifier la connection string dans \`appsettings.json\`
+
+Lancer Redis avec Docker
+docker run -d -p 6379:6379 --name redis redis
+
+Vérifier : docker ps
 
 4. Appliquer les migrations
 
